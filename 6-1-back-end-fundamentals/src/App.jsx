@@ -233,11 +233,7 @@ Hint:
 - this should happen when the page loads
 
 Syntax hint:
-   fetch('____________________________')
-     .then((res) => res.json())
-     .then((data) => {
-       // use the returned data here
-     });
+   
 
 -------------------------------------------------------------------
 TODO 9:
@@ -360,15 +356,15 @@ export default function App() {
   // Create state to store student data
   // Syntax hint:
   // const [student, setStudent] = useState(____);
+const [student, setStudent] = useState(null);
+useEffect(() => {
+   fetch('http://localhost:3000/student')
+  .then((res) => res.json())
+  .then((data) => {
+    setStudent(data);
+  });
+ }, []);
 
-  // TODO 8:
-  // Request student data from the server when the page loads
-  // Syntax hint:
-  // fetch('http://localhost:3000/student')
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     setStudent(data);
-  //   });
 
   return (
     <main className="app-shell">
